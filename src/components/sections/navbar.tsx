@@ -13,6 +13,8 @@ import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/co
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { ThemeToggle } from './theme-toggle';
+import { useAuth } from '@/hooks/use-auth';
+import { signIn, signOut } from '@/lib/auth-client';
 
 const iconMap = {
   github: Github,
@@ -26,6 +28,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(true);
   const { scrollY } = useScroll();
+  const { user, status } = useAuth();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -50,7 +53,7 @@ export function Navbar() {
       }}
       className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
-  <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 navbar-underline">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 navbar-underline">
         {/* Logo / Brand */}
         <Link href="/" className="flex items-center space-x-2">
           <motion.div
@@ -128,6 +131,36 @@ export function Navbar() {
             </Link>
           </Button>
 
+          {/* Auth Button */}
+          {status === "loading" ? (
+            <div className="h-8 w-20 bg-muted rounded animate-pulse" />
+          ) : user ? (
+            <div className="flex items-center gap-2">
+              <img 
+                src={user.image!} 
+                alt={user.name!} 
+                className="h-6 w-6 rounded-full"
+              />
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => signOut()}
+                className="text-xs hidden sm:flex"
+              >
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => signIn({ provider: 'github' })}
+              className="hidden sm:flex"
+            >
+              Sign In
+            </Button>
+          )}
+
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
@@ -178,12 +211,51 @@ export function Navbar() {
 
                 <Separator />
 
+                {/* Auth Section in Mobile Menu */}
+                <div className="space-y-3">
+                  <h3 className="text-sm font-semibold">Account</h3>
+                  {status === "loading" ? (
+                    <div className="h-9 w-full bg-muted rounded animate-pulse" />
+                  ) : user ? (
+                    <div className="flex items-center gap-3 p-2 rounded-md bg-accent">
+                      <img 
+                        src={user.image!} 
+                        alt={user.name!} 
+                        className="h-8 w-8 rounded-full"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium truncate">{user.name}</p>
+                        <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                      </div>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={() => signOut()}
+                        className="text-xs"
+                      >
+                        Logout
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => signIn({ provider: 'github' })}
+                      className="w-full gap-2"
+                    >
+                      <Github className="h-4 w-4" />
+                      Sign in with GitHub
+                    </Button>
+                  )}
+                </div>
+
+                <Separator />
+
                 {/* Bio */}
                 <div className="space-y-3">
                   <h3 className="text-sm font-semibold">About</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {siteConfig.description}
-
                   </p>
                 </div>
 
