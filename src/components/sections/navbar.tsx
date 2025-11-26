@@ -30,6 +30,15 @@ export function Navbar() {
   const { scrollY } = useScroll();
   const { user, status } = useAuth();
 
+  // Debug environment variables
+  React.useEffect(() => {
+    console.log('Vercel Env Check:', {
+      siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
+      hasClientId: !!process.env.GITHUB_CLIENT_ID,
+      hasSecret: !!process.env.BETTER_AUTH_SECRET
+    });
+  }, []);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     if (latest > previous && latest > 150) {
@@ -154,7 +163,7 @@ export function Navbar() {
             <Button 
               variant="outline" 
               size="sm" 
-              onClick={() => signIn({ provider: 'github' })}
+              onClick={() => signIn("github")} {/* FIXED: string parameter */}
               className="hidden sm:flex"
             >
               Sign In
@@ -240,7 +249,7 @@ export function Navbar() {
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      onClick={() => signIn({ provider: 'github' })}
+                      onClick={() => signIn("github")} {/* FIXED: string parameter */}
                       className="w-full gap-2"
                     >
                       <Github className="h-4 w-4" />
