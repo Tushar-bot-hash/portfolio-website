@@ -1,6 +1,14 @@
+// hooks/use-auth.ts
 "use client";
 
 import { useSession } from '@/lib/auth-client';
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  image?: string;
+}
 
 export function useAuth() {
   const { data: session, status } = useSession();
@@ -13,8 +21,8 @@ export function useAuth() {
   });
   
   return {
-    user: session?.user,
-    status,
+    user: session?.user as User | null,
+    status: status as "loading" | "authenticated" | "unauthenticated",
     isAuthenticated: !!session?.user
   };
 }

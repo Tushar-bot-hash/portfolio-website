@@ -2,13 +2,23 @@
 
 import { Button } from '@/components/ui/button';
 import { Github } from 'lucide-react';
-import { signIn } from '@/lib/auth-client';
+import { authClient } from '@/lib/auth-client';
 
 export function BetterAuthSignIn() {
+  const handleSignIn = async () => {
+    try {
+      await authClient.signIn({ 
+        provider: 'github' 
+      });
+    } catch (error) {
+      console.error('Sign in failed:', error);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center gap-2 py-6">
       <Button 
-        onClick={() => signIn({ provider: 'github' })} 
+        onClick={handleSignIn} 
         variant="outline" 
         size="lg" 
         className="gap-2"
