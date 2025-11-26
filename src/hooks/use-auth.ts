@@ -5,6 +5,13 @@ import { useSession } from '@/lib/auth-client';
 export function useAuth() {
   const { data: session, status } = useSession();
   
+  console.log('🔐 useAuth Debug:', {
+    status,
+    session,
+    hasUser: !!session?.user,
+    user: session?.user
+  });
+  
   return {
     user: session?.user,
     status,
