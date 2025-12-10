@@ -163,7 +163,7 @@ export function Navbar() {
             <Button 
               variant="outline" 
               size="sm" 
-              onClick={() => signIn("github")} {/* FIXED: string parameter */}
+              onClick={() => signIn("github")}
               className="hidden sm:flex"
             >
               Sign In
@@ -249,7 +249,7 @@ export function Navbar() {
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      onClick={() => signIn("github")} {/* FIXED: string parameter */}
+                      onClick={() => signIn("github")}
                       className="w-full gap-2"
                     >
                       <Github className="h-4 w-4" />
