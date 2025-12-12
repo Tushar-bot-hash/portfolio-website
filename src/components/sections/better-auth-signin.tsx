@@ -1,4 +1,4 @@
-// components/better-auth-signin.tsx - SEPARATE FILE
+// components/better-auth-signin.tsx
 "use client";
 
 import { Button } from '@/components/ui/button';
@@ -7,10 +7,15 @@ import { signIn } from '@/lib/auth-client';
 
 export function BetterAuthSignIn() {
   const handleSignIn = async () => {
+    console.log('1. Sign in button clicked');
+    
     try {
-      await signIn("github");
+      console.log('2. Calling signIn("github")');
+      const result = await signIn("github");
+      console.log('3. Sign in result:', result);
     } catch (error) {
-      console.error('Sign in failed:', error);
+      console.error('4. Sign in error:', error);
+      console.error('5. Error details:', error.message, error.stack);
     }
   };
 

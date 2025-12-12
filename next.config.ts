@@ -1,22 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Add CORS headers here
-  async headers() {
-    return [
-      {
-        source: '/api/:path*',
-        headers: [
-          { key: 'Access-Control-Allow-Credentials', value: 'true' },
-          { key: 'Access-Control-Allow-Origin', value: 'http://localhost:3001' },
-          { key: 'Access-Control-Allow-Methods', value: 'GET,POST,PUT,DELETE,OPTIONS,PATCH' },
-          { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization, x-requested-with' },
-        ],
-      },
-    ];
-  },
   
-  // Keep your existing image config
+  
   images: {
     remotePatterns: [
       {
@@ -50,10 +36,8 @@ const nextConfig: NextConfig = {
     ],
   },
   
-  // Keep your existing ESLint and TypeScript config
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  
+  
   typescript: {
     ignoreBuildErrors: true,
   },
