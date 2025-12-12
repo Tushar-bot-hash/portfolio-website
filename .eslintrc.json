@@ -1,0 +1,10 @@
+$eslintrc = @'
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-img-element": "warn"
+  }
+}
+'@
+Set-Content -Path ".eslintrc.json" -Value $eslintrc

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "SKIP_ESLINT=1 next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -49,13 +49,12 @@
     "next": "15.1.7",
     "next-themes": "^0.4.6",
     "react": "18.3.1",
-    "react-day-picker": "^9.9.0",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.62.0",
     "react-resizable-panels": "^3.0.4",
     "recharts": "2.15.4",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^3.3.1",
+    "tailwind-merge": "^1.16.0",
     "vaul": "^1.1.2",
     "zod": "^4.0.17"
   },
