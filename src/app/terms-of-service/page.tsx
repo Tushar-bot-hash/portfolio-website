@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Link from "next/link";
-import { siteConfig } from "@/config/site.config";  // ← REMOVED buildMetadata
-export const metadata = {  // ← CHANGED TO SIMPLE OBJECT
+import { siteConfig } from "@/config/site.config";
+export const metadata = {
   title: `Terms of Service | ${siteConfig.siteName}`,
   description: 'Terms of Service — legal terms, payments, and dispute resolution.',
 };
@@ -24,7 +25,7 @@ export default function TermsOfService() {
           <div className="text-base lg:text-lg space-y-4">
           <p className="text-sm text-muted-foreground mb-4">Last updated: August 20, 2025.</p>
 
-          <p className="mb-4">These Terms of Service ("Terms") govern your access to and use of {siteConfig.domain} and related sites (the "Sites"), owned and operated by {siteConfig.author} ("we", "us"). By accessing or using the Sites or purchasing services you agree to be bound by these Terms and any separate agreement you enter into with us.</p>
+          <p className="mb-4">These Terms of Service (&quot;Terms&quot;) govern your access to and use of {siteConfig.domain} and related sites (the &quot;Sites&quot;), owned and operated by {siteConfig.author} (&quot;we&quot;, &quot;us&quot;). By accessing or using the Sites or purchasing services you agree to be bound by these Terms and any separate agreement you enter into with us.</p>
           <p className="mb-4 text-sm">These Terms also apply to any other websites, domains, applications, services, products, or digital properties owned, operated, or offered by {siteConfig.author}.</p>
 
           <p className="mb-2 text-sm font-medium">Minimal collection statement</p>
@@ -74,7 +75,7 @@ export default function TermsOfService() {
           <h4 id="contact" className="mt-4 font-semibold">Contact</h4>
           <p className="mb-2 text-sm">For questions about these Terms or to serve legal notices: <a className="underline text-primary" href={siteConfig.links.email}>{siteConfig.links.email.replace('mailto:', '')}</a></p>
 
-          <p className="mt-6 text-sm">These Terms may change from time to time. We will post updates here and the "Last updated" date reflects the most recent revision; please check this page periodically.</p>
+          <p className="mt-6 text-sm">These Terms may change from time to time. We will post updates here and the &quot;Last updated&quot; date reflects the most recent revision; please check this page periodically.</p>
           </div>
         </CardContent>
   </Card>

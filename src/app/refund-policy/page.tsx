@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Link from "next/link";
-import { siteConfig } from "@/config/site.config";  // ← REMOVED buildMetadata
-export const metadata = {  // ← CHANGED TO SIMPLE OBJECT
+import { siteConfig } from "@/config/site.config";
+export const metadata = {
   title: `Refund Policy | ${siteConfig.siteName}`,
   description: 'Refund Policy — refunds, exceptions, and request process.',
 };
@@ -24,7 +25,7 @@ export default function RefundPolicy() {
           <div className="text-base lg:text-lg space-y-4">
           <p className="text-sm text-muted-foreground mb-4">Last updated: August 20, 2025.</p>
 
-          <p className="mb-4">This Refund Policy applies to purchases and services made through {siteConfig.domain} and related sites. References to "we", "us", or "our" include {siteConfig.author}.</p>
+          <p className="mb-4">This Refund Policy applies to purchases and services made through {siteConfig.domain} and related sites. References to &quot;we&quot;, &quot;us&quot;, or &quot;our&quot; include {siteConfig.author}.</p>
 
           <p className="mb-2 text-sm font-medium">Minimal collection statement</p>
           <p className="mb-2 text-sm">We do not collect personal details about you unless it is necessary to provide a service you requested, required by law, or you voluntarily provide them.</p>
@@ -87,7 +88,7 @@ export default function RefundPolicy() {
           <h4 id="contact" className="mt-4 font-semibold">Contact</h4>
           <p className="mb-2 text-sm">For refund requests or questions: <a className="underline text-primary" href={siteConfig.links.email}>{siteConfig.links.email.replace('mailto:', '')}</a></p>
 
-          <p className="mt-6 text-sm">This Refund Policy may be updated occasionally. The "Last updated" date at the top of this page indicates the most recent revision; please check this page periodically.</p>
+          <p className="mt-6 text-sm">This Refund Policy may be updated occasionally. The &quot;Last updated&quot; date at the top of this page indicates the most recent revision; please check this page periodically.</p>
           </div>
         </CardContent>
   </Card>

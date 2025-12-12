@@ -1,7 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Link from "next/link";
-import { siteConfig } from "@/config/site.config";  // ← REMOVED buildMetadata
-export const metadata = {  // ← CHANGED TO SIMPLE OBJECT
+import { siteConfig } from "@/config/site.config";
+export const metadata = {
   title: `Privacy Policy | ${siteConfig.siteName}`,
   description: 'Privacy Policy — how we collect, use and protect data.',
 };
@@ -26,7 +27,7 @@ export default function PrivacyPolicy() {
 
           <p className="mb-4">
             This Privacy Policy describes how {siteConfig.domain} and related sites
-            (collectively 'we', 'us', or 'our') collect,
+            (collectively &apos;we&apos;, &apos;us&apos;, or &apos;our&apos;) collect,
             use, disclose, and protect personal information when you visit or
             use our portfolio and related services. By accessing or using our
             Sites, you acknowledge that you have read and understood this
@@ -90,7 +91,7 @@ export default function PrivacyPolicy() {
           <h4 id="contact" className="mt-4 font-semibold">Contact</h4>
           <p className="mb-2 text-sm">For privacy requests or questions, contact: <a className="underline text-primary" href={siteConfig.links.email}>{siteConfig.links.email.replace('mailto:', '')}</a></p>
 
-          <p className="mt-6 text-sm">We may update this Privacy Policy from time to time. The "Last updated" date at the top indicates the most recent revision; please review this page periodically to stay informed about any changes.</p>
+          <p className="mt-6 text-sm">We may update this Privacy Policy from time to time. The &quot;Last updated&quot; date at the top indicates the most recent revision; please review this page periodically to stay informed about any changes.</p>
           </div>
         </CardContent>
   </Card>
