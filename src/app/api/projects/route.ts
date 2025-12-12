@@ -21,7 +21,7 @@ interface GitHubRepo {
 export async function GET() {
   try {
     const githubToken = process.env.GITHUB_TOKEN;
-    const githubUsername = process.env.GITHUB_USERNAME || 'muhammad-fiaz';
+    const githubUsername = process.env.GITHUB_USERNAME || 'Tushar-bot-hash';
     
     if (!githubToken) {
       return NextResponse.json(
